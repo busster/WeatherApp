@@ -22,6 +22,7 @@ function initialLocation() {
   };
 
   function error(err) {
+    
     console.log(err)
     var coords = {lat: "41.8781", lng: "-87.6298", locationName: "Chicago"}
     handleLoad(coords);
