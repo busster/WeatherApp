@@ -2,7 +2,7 @@ class WeatherController < ApplicationController
   require "open-uri"
 
   def test
-    render json: {hey: 'sup'}
+    render json: {test: 'test'}
   end
 
   def search
@@ -39,14 +39,6 @@ class WeatherController < ApplicationController
       uri = "https://api.darksky.net/forecast/#{ENV['DARK_SKY_KEY']}/#{weather_params[:lat]},#{weather_params[:lng]},#{time}"
       historic_data << JSON.parse(URI.parse(uri).read)
     end
-
-    # uri = "https://api.darksky.net/forecast/#{ENV['DARK_SKY_KEY']}/#{weather_params[:lat]},#{weather_params[:lng]}"
-    # uri = "http://api.worldweatheronline.com/free/v2/past-weather.ashx?key=528953c5fb814683cde647b8c6e31&q=21201&date=2017-01-30&enddate=2017-03-01&format=json"
-
-    # weather_data = JSON.parse(URI.parse(uri).read)
-
-
-    # json = JSON.parse(URI.parse(uri).read)
 
 
     weather_data = Weather.serialize_historic_data(historic_data)
